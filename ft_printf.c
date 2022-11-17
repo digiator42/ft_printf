@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 02:08:31 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/18 02:34:22 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/18 02:41:47 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,6 @@
 #include <stdarg.h>
 
 int		ft_printf(char *input, ...);
-
-char	print_char(int c)
-{
-	write(1, &c, 1);
-	return (0);
-}
-
-int	print_str(char *c)
-{
-	int	i;
-
-	i = 0;
-	while (c[i])
-	{
-		write(1, &c[i], 1);
-		i++;
-	}
-	return (i);
-}
 
 int	ft_printhex(char current, long long c)
 {
@@ -68,9 +49,9 @@ int	ft_format(va_list args, char percent, char current)
 	else if (current == 'x' || current == 'X')
 		result += ft_printhex(current, va_arg(args, int));
 	else if (current == '\n')
-		print_str("%\n");
+		ft_putstr("%\n");
 	else if (current == '%' || !current)
-		print_char(percent);
+		ft_putchar(percent);
 	else //if current != all criteria, print both
 		result += ft_printf("%c%c", percent, current);
 	return (result);
@@ -94,7 +75,7 @@ int	ft_printf(char *input, ...)
 			result += ft_format(args, input[j], input[++i]);
 		}
 		else
-			result += print_char(input[i]);
+			ft_putchar(input[i]);
 		i++;
 	}
 	va_end(args);
