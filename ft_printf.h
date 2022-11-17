@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:20:29 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/17 03:47:55 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/18 02:34:03 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <unistd.h>
 
 int 				ft_printf(char *input, ...);
-void				ft_putchar_fd(char c, int fd);
-void				ft_putstr_fd(char *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
+void				ft_putchar(char c);
+void				ft_putstr(char *s);
+void				ft_putnbr(int n);
+int	ft_printhex(char current, long long c);
 
 
 #endif

@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 10:08:46 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/17 03:48:37 by ahassan          ###   ########.fr       */
+/*   Created: 2022/08/15 10:08:42 by ahassan           #+#    #+#             */
+/*   Updated: 2022/11/18 02:35:22 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putnbr(int n)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	if (n == -2147483648)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		ft_putstr("-2147483648");
+		return ;
 	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
+	}
+	if (n < 10 && n >= 0)
+	{
+		ft_putchar(n + '0');
+		return ;
+	}
+	ft_putnbr(n / 10);
+	ft_putnbr(n % 10);
 }

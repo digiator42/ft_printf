@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 10:08:34 by Aimlive           #+#    #+#             */
-/*   Updated: 2022/11/17 03:48:27 by ahassan          ###   ########.fr       */
+/*   Created: 2022/08/15 10:08:46 by ahassan           #+#    #+#             */
+/*   Updated: 2022/11/18 02:12:11 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr(char *s)
 {
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 }
