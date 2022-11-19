@@ -6,13 +6,14 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 10:08:34 by Aimlive           #+#    #+#             */
-/*   Updated: 2022/11/18 02:33:09 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/19 02:33:01 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return 1;
 }

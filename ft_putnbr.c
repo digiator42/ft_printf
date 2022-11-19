@@ -6,29 +6,31 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 10:08:42 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/18 02:35:22 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/19 03:39:38 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int	ft_putnbr(int n)
 {
+	int res = 0;
 	if (n == -2147483648)
 	{
-		ft_putstr("-2147483648");
-		return ;
+		res += ft_putstr("-2147483648");
+		return res;
 	}
 	if (n < 0)
 	{
-		ft_putchar('-');
+		res += ft_putchar('-');
 		n *= -1;
 	}
 	if (n < 10 && n >= 0)
 	{
-		ft_putchar(n + '0');
-		return ;
+		res += ft_putchar(n + '0');
+		return res;
 	}
-	ft_putnbr(n / 10);
-	ft_putnbr(n % 10);
+	res += ft_putnbr(n / 10);
+	res += ft_putnbr(n % 10);
+	return res;
 }
