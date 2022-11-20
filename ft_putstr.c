@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 10:08:46 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/19 02:24:53 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/20 02:07:37 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ int	ft_putstr(char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+	{
+		i += ft_putstr("(null)");
+		return (i);
+	}
 	while (s[i])
 	{
 		write(1, &s[i], 1);
 		i++;
 	}
-	return i;
+	return (i);
 }

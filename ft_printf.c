@@ -6,58 +6,13 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 02:08:31 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/19 04:07:31 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/20 20:51:39 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 
-int		ft_printf(char *input, ...);
-
-int	ft_printhex(char current, long long c)
-{
-	int	result;
-	
-	result = 1;
-	if (c >= 16)
-		result += ft_printhex(current, c / 16);
-	c %= 16;
-	if (current == 'X')
-		write(1, &"0123456789ABCDEF"[c], 1);
-	else
-		write(1, &"0123456789abcdef"[c], 1);
-	return (result);
-}
-
-int	ft_format(va_list args, char percent, char current)
-{
-	int	result;
-
-	result = 0;
-	if (current == 'd' || current == 'i' || current == 'u')
-		result += ft_putnbr(va_arg(args, int));
-	else if (current == 'c')
-		result += ft_putchar(va_arg(args, int));
-	else if (current == 'p')
-	{
-		result += ft_putstr("0x");
-		result += ft_printhex(current, va_arg(args, long long));
-	}
-	else if (current == 's')
-		result += ft_putstr(va_arg(args, char *));
-	else if (current == 'x' || current == 'X')
-		result += ft_printhex(current, va_arg(args, int));
-	// else if (current == '\n')
-	// 	ft_putstr("%\n");
-	else if (current == '%' || !current)
-		result += ft_putchar(percent);
-	else //if current != all criteria, print both
-		result += ft_printf("%c%c", percent, current);
-	return (result);
-}
-
-int	ft_printf(char *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	int		result;
 	int		i;
@@ -81,35 +36,3 @@ int	ft_printf(char *input, ...)
 	va_end(args);
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	printf("\n%d\n", ft_printf("1, 2, 3, -d test, testing, 0.4s sound, 1, 2, 3xp, sound, -*dtest"));
-// 	// // int *i = 0;
-// 	// ft_printf("%d\nMohamed Monier\n%c\n%s\n", -12312313, 'a', "OMGGGGGGG");
-// 	// write(1, "--------------------\n", 22);
-// 	// printf("%d\nMohamed Monier\n%c\n%s\n", -12312313, 'a', "OMGGGGGGG");
-
-// 	// ft_printf("%%\nfdf\n%p\n%i\n%c\n%s\n%p\n", -32, __LONG_LONG_MAX__, 'c',
-// 	// 		"dd", (void *)__LONG_LONG_MAX__);
-// 	// write(1, "--------------------\n", 22);
-// 	// printf("%%\nfdf\n%p\n%i\n%c\n%s\n%p\n", -32, __LONG_LONG_MAX__, 'c', "dd",
-// 	// 		(void *)__LONG_LONG_MAX__);
-
-// 	// //
-// 	// //max handling for printing pointers is unsigned int 4,294,967,295 increased by 1
-
-// 	// //%\n new line is not printed
-// 	// ft_printf("Integers: %i %u \n", -3456, 3456);
-// 	// ft_printf("Characters: %c %c \n", 'z', 80);
-// 	// ft_printf("Decimals: %d %u\n", 1997, 32000L);
-// 	// ft_printf("==>: %kkkk\n");
-// 	// ft_printf("%s \n", "Educative");
-// 	// ft_printf("%"); // this is working on online compiler, linux not
-// 	// ft_printf("--------------\n");
-// 	// printf("Integers: %i %u \n", -3456, 3456);
-// 	// printf("Characters: %c %c \n", 'z', 80);
-// 	// printf("Decimals: %d %ld\n", 1997, 32000L);
-// 	// printf("==>: %kkkk\n");
-// 	// printf("%s \n", "Educative");
-// }

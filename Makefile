@@ -1,36 +1,28 @@
 NAME = libftprintf.a
 
-SRC =ft_putnbr.c \
-ft_printf.c \
-ft_putchar.c \
-ft_putstr.c
+SRCS = ft_printf.c		\
+       ft_putchar.c		\
+	   ft_putstr.c		\
+	   ft_putnbr.c		\
+	   ft_format.c		\
+	   ft_printhex.c	\
+	   ft_printunsigned.c
 
-OBJ = ${SRC:.c=.o}
+OBJS = $(SRCS:.c=.o)
 
-CFLAG = -Wall -Werror -Wextra
+CC = gcc
 
-CC = clang
+CFLAGS = -Wall -Wextra -Werror
 
-.c.o:
-	@gcc ${CFLAG} -c $< -o ${<:.c=.o}
+all: $(NAME)
 
-${NAME}: ${OBJ}
-	@ar rc ${NAME} ${OBJ}
-	@echo "libftprintf.a is compiled"
-
-all: ${NAME}
-	@echo "libftprintf.a is compiled"
-bonus: all
+$(NAME): $(OBJS)
+	ar -rc $(NAME) $(OBJS)
 
 clean:
-	@rm -f ${OBJ}
-	@echo "ft_printf.h is clean and still got libftprintf.a"
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f ${NAME}
-	@echo "ft_printf.h is all clean"
+	rm -f $(NAME)
 
 re: fclean all
-	@echo "cleaned and compiled again libftprintf.a"
-
-.PHONY : all clean fclean re bonus

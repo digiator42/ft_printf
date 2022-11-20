@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_printunsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 10:08:42 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/20 03:25:37 by ahassan          ###   ########.fr       */
+/*   Created: 2022/11/20 01:41:48 by ahassan           #+#    #+#             */
+/*   Updated: 2022/11/20 02:05:28 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_printunsigned(unsigned int n)
 {
 	int	res;
 
 	res = 0;
-	if (n == -2147483648)
-	{
-		res += ft_putstr("-2147483648");
-		return (res);
-	}
 	if (n < 0)
 	{
 		res += ft_putchar('-');
