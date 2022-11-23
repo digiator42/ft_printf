@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 01:44:17 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/23 08:30:49 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/23 08:34:04 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ int	ft_format(va_list args, char current)
 	if (current == 's')
 		result += ft_putstr(va_arg(args, char *));
 	if (current == 'p')
-	{
 		result += ft_printpointer(current, va_arg(args, unsigned long long));
-	}
 	if (current == 'x' || current == 'X')
 		result += ft_printhex(current, va_arg(args, unsigned int));
 	if (current == '%')
