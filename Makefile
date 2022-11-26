@@ -6,7 +6,8 @@ SRCS = ft_printf.c		\
 	   ft_putnbr.c		\
 	   ft_format.c		\
 	   ft_printhex.c	\
-	   ft_printunsigned.c
+	   ft_printunsigned.c	\
+	   ft_printpointer.c
 
 OBJS = $(SRCS:.c=.o)
 
