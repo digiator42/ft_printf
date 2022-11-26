@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 01:41:48 by ahassan           #+#    #+#             */
-/*   Updated: 2022/11/23 06:59:14 by ahassan          ###   ########.fr       */
+/*   Updated: 2022/11/26 21:20:21 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_printunsigned(unsigned int n)
 	int	res;
 
 	res = 0;
-	if (n < 10 || n == 0)
+	if (n < 10)
 	{
 		res += ft_putchar(n + '0');
 		return (res);
